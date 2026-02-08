@@ -9,12 +9,11 @@ const API = axios.create({
 
 export default API;
 
-/* -------- CAPTCHA -------- */
 export const getCaptcha = () => {
   return API.get("/user/captcha?captcha_type=easy");
 };
 
-/* -------- REGISTER -------- */
+/* REGISTER  */
 export const registerUser = (data, captchaToken) => {
   return API.post("/user/register", data, {
     headers: {
@@ -23,12 +22,12 @@ export const registerUser = (data, captchaToken) => {
   });
 };
 
-/* -------- LOGIN -------- */
+/* LOGIN  */
 export const loginUser = (data) => {
   return API.post("/user/login", data);
 };
 
-/* -------- FORGOT PASSWORD - SEND OTP -------- */
+/*  FORGOT PASSWORD - SEND OTP */
 export const sendForgotOtp = (email) => {
   return API.post(
     "/user/forgotreset?forgot_type=password&call_type=sendmail",
@@ -36,7 +35,7 @@ export const sendForgotOtp = (email) => {
   );
 };
 
-/* -------- FORGOT PASSWORD - CHANGE PASSWORD -------- */
+/*  FORGOT PASSWORD - CHANGE PASSWORD */
 export const resetForgotPassword = (data) => {
   return API.post(
     "/user/forgotreset?forgot_type=password&call_type=changepassword",
